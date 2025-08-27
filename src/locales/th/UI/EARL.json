@@ -1,0 +1,10 @@
+{
+    "PASSED": "ผ่าน",
+    "FAILED": "ไม่ผ่าน",
+    "CANT_TELL": "ไม่สามารถบอกได้",
+    "INAPPLICABLE": "ไม่มี",
+    "UNTESTED": "ไม่ได้ตรวจสอบ",
+    "LEVEL_A": "ระดับ A",
+    "LEVEL_AA": "ระดับ AA",
+    "LEVEL_AAA": "ระดับ AAA"
+}

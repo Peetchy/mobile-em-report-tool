@@ -4,9 +4,19 @@ export const initialScopeStore = {
   ADDITIONAL_REQUIREMENTS: '',
   AS_BASELINE: '',
   CONFORMANCE_TARGET: 'AA',
+  // Target type of evaluation: 'website' | 'application'
+  TARGET_TYPE: 'website',
   SITE_NAME: '',
   WCAG_VERSION: '2.2',
-  WEBSITE_SCOPE: ''
+  WEBSITE_SCOPE: '',
+  // Application-specific metadata (used when TARGET_TYPE === 'application')
+  APP_PLATFORM: '',
+  APP_OS_VERSION: '',
+  APP_VERSION: '',
+  DEVICE_TYPES: '',
+  INPUT_METHODS: '',
+  ASSISTIVE_TECH: '',
+  DISTRIBUTION: ''
 };
 
 const scopeStore = writable({...initialScopeStore});

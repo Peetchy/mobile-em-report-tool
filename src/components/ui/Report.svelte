@@ -82,21 +82,47 @@
   <dl>
     <dt>
       <ReportHeaderKey editing={editEvaluationScope} field="SITE_NAME">
-        {TRANSLATED.LABEL_WEBSITE_NAME}
+  {$scopeStore['TARGET_TYPE'] === 'application' ? TRANSLATED.LABEL_APP_NAME : TRANSLATED.LABEL_WEBSITE_NAME}
       </ReportHeaderKey>
     </dt>
     <dd>
       <ReportHeaderValue editing={editEvaluationScope} field="SITE_NAME" store="scopeStore" />
     </dd>
 
-    <dt>
-      <ReportHeaderKey editing={editEvaluationScope} field="WEBSITE_SCOPE">
-        {TRANSLATED.LABEL_WEBSITE_SCOPE}
-      </ReportHeaderKey>
-    </dt>
-    <dd>
-      <ReportHeaderValue editing={editEvaluationScope} field="WEBSITE_SCOPE" store="scopeStore" multiline={true} />
-    </dd>
+    {#if $scopeStore['TARGET_TYPE'] === 'application'}
+      <dt>
+        <ReportHeaderKey editing={editEvaluationScope} field="WEBSITE_SCOPE">
+          {TRANSLATED.LABEL_APP_SCOPE}
+        </ReportHeaderKey>
+      </dt>
+      <dd>
+        <ReportHeaderValue editing={editEvaluationScope} field="WEBSITE_SCOPE" store="scopeStore" multiline={true} />
+      </dd>
+
+      <dt><ReportHeaderKey editing={editEvaluationScope} field="APP_PLATFORM">{TRANSLATED.LABEL_APP_PLATFORM}</ReportHeaderKey></dt>
+      <dd><ReportHeaderValue editing={editEvaluationScope} field="APP_PLATFORM" store="scopeStore" /></dd>
+      <dt><ReportHeaderKey editing={editEvaluationScope} field="APP_OS_VERSION">{TRANSLATED.LABEL_APP_OS_VERSION}</ReportHeaderKey></dt>
+      <dd><ReportHeaderValue editing={editEvaluationScope} field="APP_OS_VERSION" store="scopeStore" /></dd>
+      <dt><ReportHeaderKey editing={editEvaluationScope} field="APP_VERSION">{TRANSLATED.LABEL_APP_VERSION}</ReportHeaderKey></dt>
+      <dd><ReportHeaderValue editing={editEvaluationScope} field="APP_VERSION" store="scopeStore" /></dd>
+      <dt><ReportHeaderKey editing={editEvaluationScope} field="DEVICE_TYPES">{TRANSLATED.LABEL_DEVICE_TYPES}</ReportHeaderKey></dt>
+      <dd><ReportHeaderValue editing={editEvaluationScope} field="DEVICE_TYPES" store="scopeStore" /></dd>
+      <dt><ReportHeaderKey editing={editEvaluationScope} field="INPUT_METHODS">{TRANSLATED.LABEL_INPUT_METHODS}</ReportHeaderKey></dt>
+      <dd><ReportHeaderValue editing={editEvaluationScope} field="INPUT_METHODS" store="scopeStore" /></dd>
+      <dt><ReportHeaderKey editing={editEvaluationScope} field="ASSISTIVE_TECH">{TRANSLATED.LABEL_ASSISTIVE_TECH}</ReportHeaderKey></dt>
+      <dd><ReportHeaderValue editing={editEvaluationScope} field="ASSISTIVE_TECH" store="scopeStore" /></dd>
+      <dt><ReportHeaderKey editing={editEvaluationScope} field="DISTRIBUTION">{TRANSLATED.LABEL_DISTRIBUTION}</ReportHeaderKey></dt>
+      <dd><ReportHeaderValue editing={editEvaluationScope} field="DISTRIBUTION" store="scopeStore" /></dd>
+    {:else}
+      <dt>
+        <ReportHeaderKey editing={editEvaluationScope} field="WEBSITE_SCOPE">
+          {TRANSLATED.LABEL_WEBSITE_SCOPE}
+        </ReportHeaderKey>
+      </dt>
+      <dd>
+        <ReportHeaderValue editing={editEvaluationScope} field="WEBSITE_SCOPE" store="scopeStore" multiline={true} />
+      </dd>
+    {/if}
 
     <dt>
       <ReportHeaderKey editing={editEvaluationScope} field="WCAG_VERSION">
@@ -238,6 +264,7 @@
   const { sampleStore, summaryStore, exploreStore, translate } = getContext(
     'app'
   );
+  const { scopeStore } = getContext('app');
 
   let editAbout = false;
   let editExecutiveSummary = false;
@@ -254,8 +281,17 @@
     HEADING_ABOUT: $translate('UI.REPORT.HD_ABOUT'),
     HEADING_SUMMARY: $translate('UI.REPORT.HD_SUMMARY'),
     HEADING_SCOPE: $translate('UI.REPORT.HD_SCOPE'),
-    LABEL_WEBSITE_NAME: $translate('PAGES.SCOPE.LABEL_SITE_NAME'),
-    LABEL_WEBSITE_SCOPE: $translate('PAGES.SCOPE.LABEL_SITE_SCOPE'),
+  LABEL_WEBSITE_NAME: $translate('PAGES.SCOPE.LABEL_SITE_NAME'),
+  LABEL_APP_NAME: $translate('PAGES.SCOPE.LABEL_APP_NAME'),
+  LABEL_WEBSITE_SCOPE: $translate('PAGES.SCOPE.LABEL_SITE_SCOPE'),
+  LABEL_APP_SCOPE: $translate('PAGES.SCOPE.LABEL_APP_SCOPE'),
+  LABEL_APP_PLATFORM: $translate('PAGES.SCOPE.LABEL_APP_PLATFORM'),
+  LABEL_APP_OS_VERSION: $translate('PAGES.SCOPE.LABEL_APP_OS_VERSION'),
+  LABEL_APP_VERSION: $translate('PAGES.SCOPE.LABEL_APP_VERSION'),
+  LABEL_DEVICE_TYPES: $translate('PAGES.SCOPE.LABEL_DEVICE_TYPES'),
+  LABEL_INPUT_METHODS: $translate('PAGES.SCOPE.LABEL_INPUT_METHODS'),
+  LABEL_ASSISTIVE_TECH: $translate('PAGES.SCOPE.LABEL_ASSISTIVE_TECH'),
+  LABEL_DISTRIBUTION: $translate('PAGES.SCOPE.LABEL_DISTRIBUTION'),
     LABEL_WCAG_VERSION: $translate('PAGES.SCOPE.LABEL_WCAG_VERSION'),
     LABEL_CONFORMANCE_TARGET: $translate('PAGES.SCOPE.LABEL_CONFORMANCE_TGT'),
     LABEL_EXTRA_REQUIREMENTS: $translate('PAGES.SCOPE.LABEL_EXTRA_REQUIREMENTS'),

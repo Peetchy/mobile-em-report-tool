@@ -12,6 +12,17 @@
     "LABEL_ESSENT_FUNC": "Essential functionality of the website",
     "INF_ESSENT_FUNC": "You can use this field to take notes about essential functionality of the website. Examples of essential functionality include:<br> ‘selecting and purchasing a product from the shop area of the website’<br> ‘completing and submitting a form provided on the website’<br> ‘registering for an account on the website’<br> For more information, see [WCAG-EM Step 2.b: Identify Essential Functionality of the Website](https://www.w3.org/TR/WCAG-EM/#step2b).",
     "LABEL_VARIETY_PAGE_TYPES": "Variety of web page types",
-    "INF_VARIETY_PAGE_TYPES": "You can use this field to take notes about the types (as opposed to instances) of web pages that you find on the web site. This includes notes about different styles, layouts, structures, and functionality provided on the website. For more information, see [WCAG-EM Step 2.c: Identify the Variety of Web Page Types](https://www.w3.org/TR/WCAG-EM/#step2c).<br> **Note**: ‘Web pages’ include different ‘web page states’; see definition of [web page states](https://www.w3.org/TR/WCAG-EM/#states).",
-    "ADD_TECH": "Add"
+        "INF_VARIETY_PAGE_TYPES": "You can use this field to take notes about the types (as opposed to instances) of web pages that you find on the web site. This includes notes about different styles, layouts, structures, and functionality provided on the website. For more information, see [WCAG-EM Step 2.c: Identify the Variety of Web Page Types](https://www.w3.org/TR/WCAG-EM/#step2c).<br> **Note**: ‘Web pages’ include different ‘web page states’; see definition of [web page states](https://www.w3.org/TR/WCAG-EM/#states).",
+        "ADD_TECH": "Add",
+  
+        "LABEL_CRITICAL_FLOWS": "Critical user flows (apps)",
+        "INF_CRITICAL_FLOWS": "List critical flows and tasks in the application, such as onboarding, login, checkout, form submissions, or settings changes.",
+        "LABEL_DYNAMIC_STATES": "Dynamic states/components",
+        "INF_DYNAMIC_STATES": "Note dialogs, modals, overlays, infinite lists, custom controls, and other dynamic parts that change state.",
+        "LABEL_PERMISSIONS": "Permissions and notifications",
+        "INF_PERMISSIONS": "Document any OS permissions, notifications, background tasks, or device features the app uses.",
+        "LABEL_OFFLINE_BEHAVIOR": "Offline and connectivity",
+        "INF_OFFLINE_BEHAVIOR": "Describe how the application behaves offline, on slow networks, or after reconnecting.",
+        "LABEL_EMBEDDED_WEBVIEWS": "Embedded web views",
+        "INF_EMBEDDED_WEBVIEWS": "List any screens using embedded browsers/web views and what they show."
 }

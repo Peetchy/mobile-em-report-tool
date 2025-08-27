@@ -84,9 +84,9 @@
   import assertions from '@app/stores/earl/assertionStore/index.js';
 
   $: TRANSLATED = {
-    NO_SAMPLE: $translate('PAGES.SAMPLE.NO_PAGES_DEFINED'),
-    ADD_PAGE_BUTTON: $translate('PAGES.SAMPLE.BTN_ADD_PAGE'),
-    DELETE_CONFIRM: $translate('PAGES.SAMPLE.DELETE_CONFIRM'),
+  NO_SAMPLE: $translate('PAGES.SAMPLE.NO_ITEMS_DEFINED'),
+  ADD_PAGE_BUTTON: $translate('PAGES.SAMPLE.BTN_ADD_ITEM'),
+  DELETE_CONFIRM: $translate('PAGES.SAMPLE.DELETE_CONFIRM_ITEM'),
     SHOW_INFO_BUTTON: $translate('UI.COMMON.BUTTON.INFO'),
     SHOW_HIDE_HELPTEXT: showHelptext
       ? $translate('UI.COMMON.BUTTON.HIDE', {

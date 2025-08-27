@@ -1,0 +1,9 @@
+{
+    "TITLE": "รายงาน",
+    "BTN_SAVE_HTML": "ดาวน์โหลดรายงาน (HTML)",
+    "BTN_SAVE_JSON": "ดาวน์โหลดรายงาน (JSON)",
+    "HEADER_SUCCESS_CRITERION": "เกณฑ์ความสำเร็จ",
+    "HEADER_RESULT": "ผลลัพธ์",
+    "HEADER_OBSERVATIONS": "การสังเกต",
+    "NO_OBSERVATIONS_FOUND": "ไม่พบการสังเกตที่เพิ่ม"
+}

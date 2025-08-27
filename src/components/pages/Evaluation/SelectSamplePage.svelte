@@ -12,23 +12,28 @@
       bind:value="{$exploreStore['ESSENTIAL_FUNCTIONALITY']}"
     />
 
-    <Textarea
-      id="page_types"
-      label="{TRANSLATED.EXPLORE_VARIETY_OF_WEB_PAGE_TYPES_LABEL}"
-      bind:value="{$exploreStore['PAGE_TYPES']}"
-    />
+    {#if $scopeStore['TARGET_TYPE'] === 'application'}
+      <Textarea id="critical_flows" label="{TRANSLATED.CRITICAL_FLOWS_LABEL}" bind:value="{$exploreStore['CRITICAL_FLOWS']}" />
+      <Textarea id="dynamic_states" label="{TRANSLATED.DYNAMIC_STATES_LABEL}" bind:value="{$exploreStore['DYNAMIC_STATES']}" />
+    {:else}
+      <Textarea
+        id="page_types"
+        label="{TRANSLATED.EXPLORE_VARIETY_OF_WEB_PAGE_TYPES_LABEL}"
+        bind:value="{$exploreStore['PAGE_TYPES']}"
+      />
+    {/if}
 
     <SampleInput
       id="structured_sample"
       bind:value="{$sampleStore['STRUCTURED_SAMPLE']}"
-      label="{TRANSLATED.STRUCTURED_SAMPLE_HEADING}"
+      label="{$scopeStore['TARGET_TYPE'] === 'application' ? TRANSLATED.STRUCTURED_SAMPLE_HEADING_APP : TRANSLATED.STRUCTURED_SAMPLE_HEADING}"
       helptext="{TRANSLATED.STRUCTURED_SAMPLE_INFO}"
     />
 
     <SampleInput
       id="random_sample"
       bind:value="{$sampleStore['RANDOM_SAMPLE']}"
-      label="{TRANSLATED.RANDOM_SAMPLE_HEADING}"
+      label="{$scopeStore['TARGET_TYPE'] === 'application' ? TRANSLATED.RANDOM_SAMPLE_HEADING_APP : TRANSLATED.RANDOM_SAMPLE_HEADING}"
       helptext="{TRANSLATED.RANDOM_SAMPLE_INFO}"
     >
       <p>{TRANSLATED.RANDOM_SAMPLE_NOTE}</p>
@@ -44,7 +49,7 @@
   import Textarea from '@app/components/form/Textarea.svelte';
   import ResourceLink from '@app/components/ui/ResourceLink.svelte';
 
-  const { exploreStore, sampleStore, translate } = getContext('app');
+  const { exploreStore, sampleStore, scopeStore, translate } = getContext('app');
 
   $: structuredSample = $sampleStore['STRUCTURED_SAMPLE'];
   $: STRUCTURED_SAMPLE_COUNT = structuredSample.length || 0;
@@ -61,9 +66,11 @@
     EXPLORE_VARIETY_OF_WEB_PAGE_TYPES_LABEL: $translate(
       'PAGES.SAMPLE.HD_VARIETY_PAGE_TYPES'
     ),
-    STRUCTURED_SAMPLE_HEADING: $translate('PAGES.SAMPLE.HD_STRUCT_SAMPLE_SUB'),
+  STRUCTURED_SAMPLE_HEADING: $translate('PAGES.SAMPLE.HD_STRUCT_SAMPLE_SUB'),
+  STRUCTURED_SAMPLE_HEADING_APP: $translate('PAGES.SAMPLE.HD_STRUCT_SAMPLE_SUB_APP'),
     STRUCTURED_SAMPLE_INFO: $translate('PAGES.SAMPLE.INF_STRUCT_SAMPLE'),
     RANDOM_SAMPLE_HEADING: $translate('PAGES.SAMPLE.HD_RANDOM_SAMPLE'),
+  RANDOM_SAMPLE_HEADING_APP: $translate('PAGES.SAMPLE.HD_RANDOM_SAMPLE_APP'),
     RANDOM_SAMPLE_INFO: $translate('PAGES.SAMPLE.INF_RAND_SAMPLE'),
     RANDOM_SAMPLE_NOTE: $translate('PAGES.SAMPLE.RAND_SAMPLE_LENGTH', {
       values: {

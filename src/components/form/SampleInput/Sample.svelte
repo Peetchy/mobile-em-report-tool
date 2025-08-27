@@ -6,7 +6,7 @@
   on:DELETE
 >
   <fieldset>
-    <legend>{$translate('PAGES.SAMPLE.SAMPLE_PAGE')} {data.title || count}</legend>
+    <legend>{$translate('PAGES.SAMPLE.SAMPLE_ITEM')} {data.title || count}</legend>
     <div class="sample-input">
       <Input
         id="{id}--title"
@@ -16,7 +16,7 @@
       />
       <Input
         id="{id}--description"
-        label="{$translate('PAGES.SAMPLE.LABEL_PAGE')}"
+        label="{$translate('PAGES.SAMPLE.LABEL_ITEM')}"
         bind:value="{data.description}"
       />
     </div>

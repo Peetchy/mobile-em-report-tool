@@ -19,12 +19,20 @@
       bind:value="{$exploreStore['ESSENTIAL_FUNCTIONALITY']}"
     />
 
-    <Textarea
-      id="page_types"
-      label="{TRANSLATED.VARIETY_OF_WEB_PAGE_TYPES_LABEL}"
-      helptext="{TRANSLATED.VARIETY_OF_WEB_PAGE_TYPES_HELPTEXT}"
-      bind:value="{$exploreStore['PAGE_TYPES']}"
-    />
+    {#if $scopeStore['TARGET_TYPE'] === 'application'}
+      <Textarea id="critical_flows" label="{TRANSLATED.CRITICAL_FLOWS_LABEL}" helptext="{TRANSLATED.CRITICAL_FLOWS_HELPTEXT}" bind:value="{$exploreStore['CRITICAL_FLOWS']}" />
+      <Textarea id="dynamic_states" label="{TRANSLATED.DYNAMIC_STATES_LABEL}" helptext="{TRANSLATED.DYNAMIC_STATES_HELPTEXT}" bind:value="{$exploreStore['DYNAMIC_STATES']}" />
+      <Textarea id="permissions" label="{TRANSLATED.PERMISSIONS_LABEL}" helptext="{TRANSLATED.PERMISSIONS_HELPTEXT}" bind:value="{$exploreStore['PERMISSIONS']}" />
+      <Textarea id="offline_behavior" label="{TRANSLATED.OFFLINE_BEHAVIOR_LABEL}" helptext="{TRANSLATED.OFFLINE_BEHAVIOR_HELPTEXT}" bind:value="{$exploreStore['OFFLINE_BEHAVIOR']}" />
+      <Textarea id="embedded_webviews" label="{TRANSLATED.EMBEDDED_WEBVIEWS_LABEL}" helptext="{TRANSLATED.EMBEDDED_WEBVIEWS_HELPTEXT}" bind:value="{$exploreStore['EMBEDDED_WEBVIEWS']}" />
+    {:else}
+      <Textarea
+        id="page_types"
+        label="{TRANSLATED.VARIETY_OF_WEB_PAGE_TYPES_LABEL}"
+        helptext="{TRANSLATED.VARIETY_OF_WEB_PAGE_TYPES_HELPTEXT}"
+        bind:value="{$exploreStore['PAGE_TYPES']}"
+      />
+    {/if}
   </form>
 </Page>
 
@@ -36,7 +44,7 @@
   import Textarea from '@app/components/form/Textarea.svelte';
   import WebTechnologiesInput from '@app/components/form/WebTechnologiesInput.svelte';
 
-  const { exploreStore, translate } = getContext('app');
+  const { exploreStore, scopeStore, translate } = getContext('app');
   $: TRANSLATED = {
     PAGE_TITLE: $translate('PAGES.EXPLORE.TITLE'),
     INTRODUCTION: $translate('PAGES.EXPLORE.INTRO'),
@@ -46,6 +54,16 @@
     ESSENTIAL_FUNCTIONALITY_LABEL: $translate('PAGES.EXPLORE.LABEL_ESSENT_FUNC'),
     ESSENTIAL_FUNCTIONALITY_HELPTEXT: $translate('PAGES.EXPLORE.INF_ESSENT_FUNC'),
     VARIETY_OF_WEB_PAGE_TYPES_LABEL: $translate('PAGES.EXPLORE.LABEL_VARIETY_PAGE_TYPES'),
-    VARIETY_OF_WEB_PAGE_TYPES_HELPTEXT: $translate('PAGES.EXPLORE.INF_VARIETY_PAGE_TYPES')
+    VARIETY_OF_WEB_PAGE_TYPES_HELPTEXT: $translate('PAGES.EXPLORE.INF_VARIETY_PAGE_TYPES'),
+    CRITICAL_FLOWS_LABEL: $translate('PAGES.EXPLORE.LABEL_CRITICAL_FLOWS'),
+    CRITICAL_FLOWS_HELPTEXT: $translate('PAGES.EXPLORE.INF_CRITICAL_FLOWS'),
+    DYNAMIC_STATES_LABEL: $translate('PAGES.EXPLORE.LABEL_DYNAMIC_STATES'),
+    DYNAMIC_STATES_HELPTEXT: $translate('PAGES.EXPLORE.INF_DYNAMIC_STATES'),
+    PERMISSIONS_LABEL: $translate('PAGES.EXPLORE.LABEL_PERMISSIONS'),
+    PERMISSIONS_HELPTEXT: $translate('PAGES.EXPLORE.INF_PERMISSIONS'),
+    OFFLINE_BEHAVIOR_LABEL: $translate('PAGES.EXPLORE.LABEL_OFFLINE_BEHAVIOR'),
+    OFFLINE_BEHAVIOR_HELPTEXT: $translate('PAGES.EXPLORE.INF_OFFLINE_BEHAVIOR'),
+    EMBEDDED_WEBVIEWS_LABEL: $translate('PAGES.EXPLORE.LABEL_EMBEDDED_WEBVIEWS'),
+    EMBEDDED_WEBVIEWS_HELPTEXT: $translate('PAGES.EXPLORE.INF_EMBEDDED_WEBVIEWS')
   };
 </script>

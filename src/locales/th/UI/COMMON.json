@@ -1,0 +1,33 @@
+{
+    "MORE_INFO": "สำหรับข้อมูลเพิ่มเติม ดู <a href={{url}}>{{name}}</a>",
+    "HIDE_MESSAGE": "ซ่อนข้อความ",
+    "ERROR": {
+        "DEFAULT": "มีบางอย่างผิดพลาด"
+    },
+    "YES": "ใช่",
+    "NO": "ไม่",
+    "NEXT": "ถัดไป {label}",
+    "PREVIOUS": "ก่อนหน้า {label}",
+    "ACTIVE": "ใช้งาน",
+    "BUTTON": {
+        "ADD": "เพิ่ม {subject}",
+        "INFO": "ข้อมูล",
+        "HIDE": "ซ่อน {subject}",
+        "LANGUAGE_SELECT": "คำแปล",
+        "SHOW": "แสดง {subject}"
+    },
+    "LABEL": {
+        "LANGUAGE_SELECT": "หน้านี้ใน"
+    },
+    "YOUR_REPORT": "รายงานของคุณ",
+    "SHOW_FULL_DESCRIPTION": "แสดงคำอธิบายแบบเต็ม",
+    "PREVIOUSNEXT": "ขั้นตอนก่อนหน้า/ถัดไป",
+    "DELETE": "ลบ",
+    "FOR": "สำหรับ",
+    "EXPAND_ALL": "ขยายทุกส่วน",
+    "COLLAPSE_ALL": "ย่อทุกส่วน",
+    "TRANSLATION_ABOUT": "เกี่ยวกับการแปลนี้",
+    "TRANSLATION_DRAFT": "การแปลจากอาสาสมัครนี้เป็น<strong>ฉบับร่าง</strong> ซึ่งมีคำภาษาอังกฤษที่จะแปลเร็วๆ นี้",
+    "TRANSLATION_ACK": "ดู <a href='https://www.w3.org/WAI/eval/report-tool/acknowledgements'>การกล่าวถึง</a> สำหรับนักแปลและผู้ร่วมงานทั้งหมด",
+    "TRANSLATION_UNOFFICIAL": "การแปล WCAG 2 หลักเกณฑ์และเกณฑ์ความสำเร็จนี้เป็น<strong>ไม่เป็นทางการ</strong> และอาจไม่สะท้อนความตั้งใจของ<a href='https://www.w3.org/WAI/standards-guidelines/wcag/#versions'>ต้นฉบับภาษาอังกฤษ</a>อย่างถูกต้อง"
+}
