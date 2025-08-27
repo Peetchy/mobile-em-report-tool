@@ -21,11 +21,7 @@ export async function internationalize(locales) {
   // await registerLocales(locales);
 
   // Keep using this until above works... 😭
-  register('en', () => import('../locales/translations_en.json'));
-  register('nl', () => import('../locales/translations_nl.json'));
-  register('fr', () => import('../locales/translations_fr.json'));
-  register('pl', () => import('../locales/translations_pl.json'));
-  register('th', () => import('../locales/translations_th.json'));  
+  register('th', () => import('../locales/translations_th.json'));
 
   init({
     fallbackLocale: defaultLocale,

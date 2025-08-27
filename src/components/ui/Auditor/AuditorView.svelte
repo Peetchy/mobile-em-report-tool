@@ -19,8 +19,8 @@
                * but we are displaying a complex testView based on multiple assertions;
                * This one specificly shows all assertions:
                * 1. that are tested agains one specific type of test
-               * 2. and contain website results shown first
-               * 3. followed by webpage specific results
+               * 2. and contain application results shown first
+               * 3. followed by screen specific results
                *
                * proposed:
                * - AuditView / AuditorView,

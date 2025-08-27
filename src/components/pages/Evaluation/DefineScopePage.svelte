@@ -5,52 +5,27 @@
   <ResourceLink href="https://www.w3.org/TR/WCAG-EM/#step1">{TRANSLATED.RESOURCE_LINK_NAME}</ResourceLink>
 
   <form id="defineScopeForm" method="" novalidate>
-    <Fieldset legend={TRANSLATED.TARGET_TYPE_LABEL} helptext={TRANSLATED.TARGET_TYPE_HELPTEXT}>
-      <MultipleChoice
-        id="target_type"
-        type="radio"
-        bind:value={$scopeStore['TARGET_TYPE']}
-        options={[{ value: 'website', title: TRANSLATED.TARGET_TYPE_WEBSITE }, { value: 'application', title: TRANSLATED.TARGET_TYPE_APPLICATION }]}
-      />
-    </Fieldset>
-
     <Input
       id="site_name"
-      label="{$scopeStore['TARGET_TYPE'] === 'application' ? TRANSLATED.APP_NAME_LABEL : TRANSLATED.SITE_NAME_LABEL}"
+      label="{TRANSLATED.APP_NAME_LABEL}"
       helptext="{TRANSLATED.SITE_NAME_HELPTEXT}"
       bind:value="{$scopeStore['SITE_NAME']}"
     />
 
-    {#if $scopeStore['TARGET_TYPE'] === 'application'}
-      <Textarea
-        id="app_scope"
-        label="{TRANSLATED.APP_SCOPE_LABEL}"
-        helptext="{TRANSLATED.APP_SCOPE_HELPTEXT}"
-        bind:value="{$scopeStore['WEBSITE_SCOPE']}"
-      />
+    <Textarea
+      id="app_scope"
+      label="{TRANSLATED.APP_SCOPE_LABEL}"
+      helptext="{TRANSLATED.APP_SCOPE_HELPTEXT}"
+      bind:value="{$scopeStore['WEBSITE_SCOPE']}"
+    />
 
-      <Input id="app_platform" label="{TRANSLATED.APP_PLATFORM_LABEL}" helptext="{TRANSLATED.APP_PLATFORM_HELPTEXT}" bind:value="{$scopeStore['APP_PLATFORM']}" />
-      <Input id="app_os_version" label="{TRANSLATED.APP_OS_VERSION_LABEL}" helptext="{TRANSLATED.APP_OS_VERSION_HELPTEXT}" bind:value="{$scopeStore['APP_OS_VERSION']}" />
-      <Input id="app_version" label="{TRANSLATED.APP_VERSION_LABEL}" helptext="{TRANSLATED.APP_VERSION_HELPTEXT}" bind:value="{$scopeStore['APP_VERSION']}" />
-      <Input id="device_types" label="{TRANSLATED.DEVICE_TYPES_LABEL}" helptext="{TRANSLATED.DEVICE_TYPES_HELPTEXT}" bind:value="{$scopeStore['DEVICE_TYPES']}" />
-      <Input id="input_methods" label="{TRANSLATED.INPUT_METHODS_LABEL}" helptext="{TRANSLATED.INPUT_METHODS_HELPTEXT}" bind:value="{$scopeStore['INPUT_METHODS']}" />
-      <Input id="assistive_tech" label="{TRANSLATED.ASSISTIVE_TECH_LABEL}" helptext="{TRANSLATED.ASSISTIVE_TECH_HELPTEXT}" bind:value="{$scopeStore['ASSISTIVE_TECH']}" />
-      <Input id="distribution" label="{TRANSLATED.DISTRIBUTION_LABEL}" helptext="{TRANSLATED.DISTRIBUTION_HELPTEXT}" bind:value="{$scopeStore['DISTRIBUTION']}" />
-    {:else}
-      <Textarea
-        id="website_scope"
-        label="{TRANSLATED.SITE_SCOPE_LABEL}"
-        helptext="{`
-          <p>${TRANSLATED.SITE_SCOPE_HELPTEXT_P1}</p>
-          <ul>
-            <li>${TRANSLATED.SITE_SCOPE_HELPTEXT_LI1}</li>
-            <li>${TRANSLATED.SITE_SCOPE_HELPTEXT_LI2}</li>
-            <li>${TRANSLATED.SITE_SCOPE_HELPTEXT_LI3}</li>
-          </ul>
-        `}"
-        bind:value="{$scopeStore['WEBSITE_SCOPE']}"
-      />
-    {/if}
+    <Input id="app_platform" label="{TRANSLATED.APP_PLATFORM_LABEL}" helptext="{TRANSLATED.APP_PLATFORM_HELPTEXT}" bind:value="{$scopeStore['APP_PLATFORM']}" />
+    <Input id="app_os_version" label="{TRANSLATED.APP_OS_VERSION_LABEL}" helptext="{TRANSLATED.APP_OS_VERSION_HELPTEXT}" bind:value="{$scopeStore['APP_OS_VERSION']}" />
+    <Input id="app_version" label="{TRANSLATED.APP_VERSION_LABEL}" helptext="{TRANSLATED.APP_VERSION_HELPTEXT}" bind:value="{$scopeStore['APP_VERSION']}" />
+    <Input id="device_types" label="{TRANSLATED.DEVICE_TYPES_LABEL}" helptext="{TRANSLATED.DEVICE_TYPES_HELPTEXT}" bind:value="{$scopeStore['DEVICE_TYPES']}" />
+    <Input id="input_methods" label="{TRANSLATED.INPUT_METHODS_LABEL}" helptext="{TRANSLATED.INPUT_METHODS_HELPTEXT}" bind:value="{$scopeStore['INPUT_METHODS']}" />
+    <Input id="assistive_tech" label="{TRANSLATED.ASSISTIVE_TECH_LABEL}" helptext="{TRANSLATED.ASSISTIVE_TECH_HELPTEXT}" bind:value="{$scopeStore['ASSISTIVE_TECH']}" />
+    <Input id="distribution" label="{TRANSLATED.DISTRIBUTION_LABEL}" helptext="{TRANSLATED.DISTRIBUTION_HELPTEXT}" bind:value="{$scopeStore['DISTRIBUTION']}" />
 
     <Select
       id="wcag_version"
@@ -94,9 +69,9 @@
 </Page>
 
 <script>
-  import { getContext, onMount } from 'svelte';
+  import { getContext } from 'svelte';
 
-  import { CONFORMANCE_LEVELS, WCAG_VERSIONS, scopedWcagVersions } from '@app/stores/wcagStore.js';
+  import { CONFORMANCE_LEVELS, WCAG_VERSIONS } from '@app/stores/wcagStore.js';
   import assertions from '@app/stores/earl/assertionStore/index.js';
   import { CriteriaSelected } from '@app/stores/selectedCriteriaStore.js';
   import tests from '@app/stores/earl/testStore/index.js';
@@ -110,26 +85,15 @@
   import Select from '@app/components/form/Select.svelte';
   import Textarea from '@app/components/form/Textarea.svelte';
   import ResourceLink from '@app/components/ui/ResourceLink.svelte';
-  import Fieldset from '@app/components/form/Fieldset.svelte';
-  import MultipleChoice from '@app/components/form/MultipleChoice.svelte';
+  
 
   const { translate } = getContext('app');
   $: TRANSLATED = {
     PAGE_TITLE: $translate('PAGES.SCOPE.TITLE'),
     INTRODUCTION: $translate('PAGES.SCOPE.INTRO'),
     RESOURCE_LINK_NAME: $translate('PAGES.SCOPE.RESOURCE_LINK_NAME'),
-  TARGET_TYPE_LABEL: $translate('PAGES.SCOPE.LABEL_TARGET_TYPE'),
-  TARGET_TYPE_HELPTEXT: $translate('PAGES.SCOPE.INF_TARGET_TYPE'),
-  TARGET_TYPE_WEBSITE: $translate('PAGES.SCOPE.OPTION_TARGET_WEBSITE'),
-  TARGET_TYPE_APPLICATION: $translate('PAGES.SCOPE.OPTION_TARGET_APPLICATION'),
-    SITE_NAME_LABEL: $translate('PAGES.SCOPE.LABEL_SITE_NAME'),
-    SITE_NAME_HELPTEXT: $translate('PAGES.SCOPE.INF_SITE_NAME'),
   APP_NAME_LABEL: $translate('PAGES.SCOPE.LABEL_APP_NAME'),
-    SITE_SCOPE_LABEL: $translate('PAGES.SCOPE.LABEL_SITE_SCOPE'),
-    SITE_SCOPE_HELPTEXT_P1: $translate('PAGES.SCOPE.INF_SITE_SCOPE_0'),
-    SITE_SCOPE_HELPTEXT_LI1: $translate('PAGES.SCOPE.INF_SITE_SCOPE_LI0'),
-    SITE_SCOPE_HELPTEXT_LI2: $translate('PAGES.SCOPE.INF_SITE_SCOPE_LI1'),
-    SITE_SCOPE_HELPTEXT_LI3: $translate('PAGES.SCOPE.INF_SITE_SCOPE_LI2'),
+  SITE_NAME_HELPTEXT: $translate('PAGES.SCOPE.INF_SITE_NAME'),
   APP_SCOPE_LABEL: $translate('PAGES.SCOPE.LABEL_APP_SCOPE'),
   APP_SCOPE_HELPTEXT: $translate('PAGES.SCOPE.INF_APP_SCOPE'),
   APP_PLATFORM_LABEL: $translate('PAGES.SCOPE.LABEL_APP_PLATFORM'),
@@ -205,7 +169,7 @@
       const check = criteria.num;
       available.push(check);
       subject = $subjects.find((subject) => {
-        return subject.type.indexOf(TestSubjectTypes.WEBSITE) >= 0;
+        return subject.type.indexOf(TestSubjectTypes.APPLICATION) >= 0;
     });
 
     test = $tests.find(($test) => {

@@ -12,28 +12,20 @@
       bind:value="{$exploreStore['ESSENTIAL_FUNCTIONALITY']}"
     />
 
-    {#if $scopeStore['TARGET_TYPE'] === 'application'}
-      <Textarea id="critical_flows" label="{TRANSLATED.CRITICAL_FLOWS_LABEL}" bind:value="{$exploreStore['CRITICAL_FLOWS']}" />
-      <Textarea id="dynamic_states" label="{TRANSLATED.DYNAMIC_STATES_LABEL}" bind:value="{$exploreStore['DYNAMIC_STATES']}" />
-    {:else}
-      <Textarea
-        id="page_types"
-        label="{TRANSLATED.EXPLORE_VARIETY_OF_WEB_PAGE_TYPES_LABEL}"
-        bind:value="{$exploreStore['PAGE_TYPES']}"
-      />
-    {/if}
+    <Textarea id="critical_flows" label="{TRANSLATED.CRITICAL_FLOWS_LABEL}" bind:value="{$exploreStore['CRITICAL_FLOWS']}" />
+    <Textarea id="dynamic_states" label="{TRANSLATED.DYNAMIC_STATES_LABEL}" bind:value="{$exploreStore['DYNAMIC_STATES']}" />
 
     <SampleInput
       id="structured_sample"
       bind:value="{$sampleStore['STRUCTURED_SAMPLE']}"
-      label="{$scopeStore['TARGET_TYPE'] === 'application' ? TRANSLATED.STRUCTURED_SAMPLE_HEADING_APP : TRANSLATED.STRUCTURED_SAMPLE_HEADING}"
+      label="{TRANSLATED.STRUCTURED_SAMPLE_HEADING_APP}"
       helptext="{TRANSLATED.STRUCTURED_SAMPLE_INFO}"
     />
 
     <SampleInput
       id="random_sample"
       bind:value="{$sampleStore['RANDOM_SAMPLE']}"
-      label="{$scopeStore['TARGET_TYPE'] === 'application' ? TRANSLATED.RANDOM_SAMPLE_HEADING_APP : TRANSLATED.RANDOM_SAMPLE_HEADING}"
+      label="{TRANSLATED.RANDOM_SAMPLE_HEADING_APP}"
       helptext="{TRANSLATED.RANDOM_SAMPLE_INFO}"
     >
       <p>{TRANSLATED.RANDOM_SAMPLE_NOTE}</p>
@@ -49,7 +41,7 @@
   import Textarea from '@app/components/form/Textarea.svelte';
   import ResourceLink from '@app/components/ui/ResourceLink.svelte';
 
-  const { exploreStore, sampleStore, scopeStore, translate } = getContext('app');
+  const { exploreStore, sampleStore, translate } = getContext('app');
 
   $: structuredSample = $sampleStore['STRUCTURED_SAMPLE'];
   $: STRUCTURED_SAMPLE_COUNT = structuredSample.length || 0;

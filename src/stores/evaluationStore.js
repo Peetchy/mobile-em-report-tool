@@ -9,14 +9,13 @@ import { slugify } from '../scripts/slugify.js';
 import appJsonLdContext, {
   importContext
 } from '@app/data/jsonld/appContext.js';
-import webTechnologies from '@app/data/webtechnologies.json';
 import { downloadFileJSON } from '@app/scripts/files.js';
 
 // Import related stores and combine
 import { TestResult } from '@app/stores/earl/resultStore/models.js';
 import { outcomeValueStore as outcomeValues } from '@app/stores/earl/resultStore/index.js';
 import scopeStore, { initialScopeStore } from '@app/stores/scopeStore.js';
-import exploreStore, { initialExploreStore, webTechnologyStore } from '@app/stores/exploreStore.js';
+import exploreStore, { initialExploreStore } from '@app/stores/exploreStore.js';
 import sampleStore, { initialSampleStore } from '@app/stores/sampleStore.js';
 import summaryStore, { initialSummaryStore } from '@app/stores/summaryStore.js';
 import {
@@ -66,8 +65,6 @@ const evaluationContext = {
   additionalEvaluationRequirements: 'wcagem:step1d',
   exploreTarget: 'wcagem:step2',
   essentialFunctionality: 'wcagem:step2b',
-  pageTypeVariety: 'wcagem:step2c',
-  technologiesReliedUpon: 'wcagem:step2d',
   selectSample: 'wcagem:step3',
   structuredSample: 'wcagem:step3a',
   randomSample: 'wcagem:step3b',
@@ -96,12 +93,12 @@ class EvaluationModel {
 
     this.defineScope = {
       '@id': '_:defineScope',
-      // First subject === scope / website
+      // First subject === scope / application
       scope: {
-        // WEBSITE_NAME
+        // APPLICATION_NAME
         title: '',
 
-        // WEBSITE_SCOPE
+        // APPLICATION_SCOPE
         description: ''
       },
       wcagVersion: DEFAULT_WCAG_VERSION,
@@ -112,9 +109,7 @@ class EvaluationModel {
 
     this.exploreTarget = {
       '@id': '_:exploreTarget',
-      technologiesReliedUpon: [],
-      essentialFunctionality: '',
-      pageTypeVariety: ''
+      essentialFunctionality: ''
     };
 
     this.selectSample = {
@@ -154,7 +149,6 @@ class EvaluationModel {
       return { ...initialExploreStore };
     });
 
-    webTechnologyStore.reset();
 
     assertions.reset();
 
@@ -333,25 +327,10 @@ class EvaluationModel {
         });
 
         exploreStore.update((value) => {
-          let technologies =
-            exploreTarget.technologiesReliedUpon ||
-            framedEvaluation.DfnReliedUponTechnologyWcag21 ||
-            framedEvaluation.DfnReliedUponTechnologyWcag20 ||
-            [];
-
-          if (!Array.isArray(technologies)) {
-            technologies = [technologies];
-          }
-
           return Object.assign(value, {
-            TECHNOLOGIES_RELIED_UPON: technologies.map((tech) => tech.title || tech),
             ESSENTIAL_FUNCTIONALITY:
               exploreTarget.essentialFunctionality ||
               framedEvaluation.essentialFunctionality ||
-              '',
-            PAGE_TYPES:
-              exploreTarget.pageTypeVariety ||
-              framedEvaluation.pageTypeVariety ||
               ''
           });
         });
@@ -634,11 +613,7 @@ export default (
     } = $scopeStore;
     const { RANDOM_SAMPLE, STRUCTURED_SAMPLE } = $sampleStore;
 
-    const {
-      ESSENTIAL_FUNCTIONALITY,
-      PAGE_TYPES,
-      TECHNOLOGIES_RELIED_UPON
-    } = $exploreStore;
+    const { ESSENTIAL_FUNCTIONALITY } = $exploreStore;
 
     const {
       EVALUATION_CREATOR,
@@ -653,7 +628,7 @@ export default (
 
     Object.assign(_evaluation.defineScope, {
       scope: $subjects.find(($subject) => {
-        return $subject.type.indexOf(TestSubjectTypes.WEBSITE) >= 0;
+        return $subject.type.indexOf(TestSubjectTypes.APPLICATION) >= 0;
       }),
       wcagVersion: WCAG_VERSION,
       conformanceTarget: CONFORMANCE_TARGET,
@@ -662,11 +637,7 @@ export default (
     });
 
     Object.assign(_evaluation.exploreTarget, {
-      technologiesReliedUpon: webTechnologies.filter(
-        (tech) => TECHNOLOGIES_RELIED_UPON.indexOf(tech.title) >= 0
-      ),
-      essentialFunctionality: ESSENTIAL_FUNCTIONALITY,
-      pageTypeVariety: PAGE_TYPES
+      essentialFunctionality: ESSENTIAL_FUNCTIONALITY
     });
 
     Object.assign(_evaluation.selectSample, {

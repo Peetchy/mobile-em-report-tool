@@ -3,14 +3,14 @@ import { Base, partsMixin } from '../models.js';
 
 export const TestSubjectTypes = {
   TESTSUBJECT: 'TestSubject',
-  WEBSITE: 'Website',
+  APPLICATION: 'Application',
   WEBPAGE: 'Webpage'
 };
 
 export const TestSubjectContext = {
   [TestSubjectTypes.TESTSUBJECT]: 'earl:TestSubject',
   wcagem: 'http://www.w3.org/TR/WCAG-EM/#',
-  [TestSubjectTypes.WEBSITE]: 'wcagem:website',
+  [TestSubjectTypes.APPLICATION]: 'wcagem:application',
   [TestSubjectTypes.WEBPAGE]: 'wcagem:webpage'
 };
 
@@ -20,7 +20,7 @@ export class TestSubject extends partsMixin(Base) {
 
     let { type } = options;
     const ALLOWED_TYPES = [
-      TestSubjectTypes.WEBSITE,
+      TestSubjectTypes.APPLICATION,
       TestSubjectTypes.WEBPAGE
     ];
 
