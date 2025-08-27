@@ -11,20 +11,20 @@
   const { scopeStore } = getContext('app');
   // Initialize
 
-  // Create a WebSite subject
-  let websiteSubject =
+  // Create an Application subject
+  let applicationSubject =
     $subjects.find((subject) => {
-      return subject.type.indexOf(TestSubjectTypes.WEBSITE) >= 0;
+      return subject.type.indexOf(TestSubjectTypes.APPLICATION) >= 0;
     }) ||
     subjects.create({
-      type: TestSubjectTypes.WEBSITE
+      type: TestSubjectTypes.APPLICATION
     });
 
   let endSubscription;
 
   $: {
-    websiteSubject.title = $scopeStore['SITE_NAME'];
-    websiteSubject.description = $scopeStore['WEBSITE_SCOPE'];
+    applicationSubject.title = $scopeStore['SITE_NAME'];
+    applicationSubject.description = $scopeStore['WEBSITE_SCOPE'];
   }
 
   setContext('Evaluation', {

@@ -4,8 +4,7 @@ export const initialScopeStore = {
   ADDITIONAL_REQUIREMENTS: '',
   AS_BASELINE: '',
   CONFORMANCE_TARGET: 'AA',
-  // Target type of evaluation: 'website' | 'application'
-  TARGET_TYPE: 'website',
+  TARGET_TYPE: 'application',
   SITE_NAME: '',
   WCAG_VERSION: '2.2',
   WEBSITE_SCOPE: '',

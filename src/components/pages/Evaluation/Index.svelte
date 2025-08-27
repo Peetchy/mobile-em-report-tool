@@ -1,6 +1,6 @@
 <script context="module">
   import AuditSamplePage from './AuditSamplePage.svelte';
-  import ExploreWebsitePage from './ExploreWebsitePage.svelte';
+  import ExploreApplicationPage from './ExploreApplicationPage.svelte';
   import ViewReportPage from './ViewReportPage.svelte';
   import SelectSamplePage from './SelectSamplePage.svelte';
   import DefineScopePage from './DefineScopePage.svelte';
@@ -8,7 +8,7 @@
 
   export {
     AuditSamplePage,
-    ExploreWebsitePage,
+    ExploreApplicationPage,
     ViewReportPage,
     SelectSamplePage,
     DefineScopePage,

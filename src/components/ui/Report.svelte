@@ -82,47 +82,36 @@
   <dl>
     <dt>
       <ReportHeaderKey editing={editEvaluationScope} field="SITE_NAME">
-  {$scopeStore['TARGET_TYPE'] === 'application' ? TRANSLATED.LABEL_APP_NAME : TRANSLATED.LABEL_WEBSITE_NAME}
+        {TRANSLATED.LABEL_APP_NAME}
       </ReportHeaderKey>
     </dt>
     <dd>
       <ReportHeaderValue editing={editEvaluationScope} field="SITE_NAME" store="scopeStore" />
     </dd>
 
-    {#if $scopeStore['TARGET_TYPE'] === 'application'}
-      <dt>
-        <ReportHeaderKey editing={editEvaluationScope} field="WEBSITE_SCOPE">
-          {TRANSLATED.LABEL_APP_SCOPE}
-        </ReportHeaderKey>
-      </dt>
-      <dd>
-        <ReportHeaderValue editing={editEvaluationScope} field="WEBSITE_SCOPE" store="scopeStore" multiline={true} />
-      </dd>
+    <dt>
+      <ReportHeaderKey editing={editEvaluationScope} field="WEBSITE_SCOPE">
+        {TRANSLATED.LABEL_APP_SCOPE}
+      </ReportHeaderKey>
+    </dt>
+    <dd>
+      <ReportHeaderValue editing={editEvaluationScope} field="WEBSITE_SCOPE" store="scopeStore" multiline={true} />
+    </dd>
 
-      <dt><ReportHeaderKey editing={editEvaluationScope} field="APP_PLATFORM">{TRANSLATED.LABEL_APP_PLATFORM}</ReportHeaderKey></dt>
-      <dd><ReportHeaderValue editing={editEvaluationScope} field="APP_PLATFORM" store="scopeStore" /></dd>
-      <dt><ReportHeaderKey editing={editEvaluationScope} field="APP_OS_VERSION">{TRANSLATED.LABEL_APP_OS_VERSION}</ReportHeaderKey></dt>
-      <dd><ReportHeaderValue editing={editEvaluationScope} field="APP_OS_VERSION" store="scopeStore" /></dd>
-      <dt><ReportHeaderKey editing={editEvaluationScope} field="APP_VERSION">{TRANSLATED.LABEL_APP_VERSION}</ReportHeaderKey></dt>
-      <dd><ReportHeaderValue editing={editEvaluationScope} field="APP_VERSION" store="scopeStore" /></dd>
-      <dt><ReportHeaderKey editing={editEvaluationScope} field="DEVICE_TYPES">{TRANSLATED.LABEL_DEVICE_TYPES}</ReportHeaderKey></dt>
-      <dd><ReportHeaderValue editing={editEvaluationScope} field="DEVICE_TYPES" store="scopeStore" /></dd>
-      <dt><ReportHeaderKey editing={editEvaluationScope} field="INPUT_METHODS">{TRANSLATED.LABEL_INPUT_METHODS}</ReportHeaderKey></dt>
-      <dd><ReportHeaderValue editing={editEvaluationScope} field="INPUT_METHODS" store="scopeStore" /></dd>
-      <dt><ReportHeaderKey editing={editEvaluationScope} field="ASSISTIVE_TECH">{TRANSLATED.LABEL_ASSISTIVE_TECH}</ReportHeaderKey></dt>
-      <dd><ReportHeaderValue editing={editEvaluationScope} field="ASSISTIVE_TECH" store="scopeStore" /></dd>
-      <dt><ReportHeaderKey editing={editEvaluationScope} field="DISTRIBUTION">{TRANSLATED.LABEL_DISTRIBUTION}</ReportHeaderKey></dt>
-      <dd><ReportHeaderValue editing={editEvaluationScope} field="DISTRIBUTION" store="scopeStore" /></dd>
-    {:else}
-      <dt>
-        <ReportHeaderKey editing={editEvaluationScope} field="WEBSITE_SCOPE">
-          {TRANSLATED.LABEL_WEBSITE_SCOPE}
-        </ReportHeaderKey>
-      </dt>
-      <dd>
-        <ReportHeaderValue editing={editEvaluationScope} field="WEBSITE_SCOPE" store="scopeStore" multiline={true} />
-      </dd>
-    {/if}
+    <dt><ReportHeaderKey editing={editEvaluationScope} field="APP_PLATFORM">{TRANSLATED.LABEL_APP_PLATFORM}</ReportHeaderKey></dt>
+    <dd><ReportHeaderValue editing={editEvaluationScope} field="APP_PLATFORM" store="scopeStore" /></dd>
+    <dt><ReportHeaderKey editing={editEvaluationScope} field="APP_OS_VERSION">{TRANSLATED.LABEL_APP_OS_VERSION}</ReportHeaderKey></dt>
+    <dd><ReportHeaderValue editing={editEvaluationScope} field="APP_OS_VERSION" store="scopeStore" /></dd>
+    <dt><ReportHeaderKey editing={editEvaluationScope} field="APP_VERSION">{TRANSLATED.LABEL_APP_VERSION}</ReportHeaderKey></dt>
+    <dd><ReportHeaderValue editing={editEvaluationScope} field="APP_VERSION" store="scopeStore" /></dd>
+    <dt><ReportHeaderKey editing={editEvaluationScope} field="DEVICE_TYPES">{TRANSLATED.LABEL_DEVICE_TYPES}</ReportHeaderKey></dt>
+    <dd><ReportHeaderValue editing={editEvaluationScope} field="DEVICE_TYPES" store="scopeStore" /></dd>
+    <dt><ReportHeaderKey editing={editEvaluationScope} field="INPUT_METHODS">{TRANSLATED.LABEL_INPUT_METHODS}</ReportHeaderKey></dt>
+    <dd><ReportHeaderValue editing={editEvaluationScope} field="INPUT_METHODS" store="scopeStore" /></dd>
+    <dt><ReportHeaderKey editing={editEvaluationScope} field="ASSISTIVE_TECH">{TRANSLATED.LABEL_ASSISTIVE_TECH}</ReportHeaderKey></dt>
+    <dd><ReportHeaderValue editing={editEvaluationScope} field="ASSISTIVE_TECH" store="scopeStore" /></dd>
+    <dt><ReportHeaderKey editing={editEvaluationScope} field="DISTRIBUTION">{TRANSLATED.LABEL_DISTRIBUTION}</ReportHeaderKey></dt>
+    <dd><ReportHeaderValue editing={editEvaluationScope} field="DISTRIBUTION" store="scopeStore" /></dd>
 
     <dt>
       <ReportHeaderKey editing={editEvaluationScope} field="WCAG_VERSION">
@@ -261,9 +250,7 @@
   import ReportSummary from './Report/ReportSummary.svelte';
   import evaluationStore from '@app/stores/evaluationStore.js';
 
-  const { sampleStore, summaryStore, exploreStore, translate } = getContext(
-    'app'
-  );
+  const { sampleStore, summaryStore, translate } = getContext('app');
   const { scopeStore } = getContext('app');
 
   let editAbout = false;
@@ -281,9 +268,7 @@
     HEADING_ABOUT: $translate('UI.REPORT.HD_ABOUT'),
     HEADING_SUMMARY: $translate('UI.REPORT.HD_SUMMARY'),
     HEADING_SCOPE: $translate('UI.REPORT.HD_SCOPE'),
-  LABEL_WEBSITE_NAME: $translate('PAGES.SCOPE.LABEL_SITE_NAME'),
   LABEL_APP_NAME: $translate('PAGES.SCOPE.LABEL_APP_NAME'),
-  LABEL_WEBSITE_SCOPE: $translate('PAGES.SCOPE.LABEL_SITE_SCOPE'),
   LABEL_APP_SCOPE: $translate('PAGES.SCOPE.LABEL_APP_SCOPE'),
   LABEL_APP_PLATFORM: $translate('PAGES.SCOPE.LABEL_APP_PLATFORM'),
   LABEL_APP_OS_VERSION: $translate('PAGES.SCOPE.LABEL_APP_OS_VERSION'),
@@ -304,8 +289,7 @@
     CONFORMANCE_LEVEL: $translate('WCAG.COMMON.CONFORMANCE_LEVEL'),
     TEXT_NO_SAMPLE: $translate('PAGES.AUDIT.NO_SAMPLE'),
     SUMMARY: $translate('UI.REPORT.SUMMARY'),
-    ALL_RESULTS: $translate('UI.REPORT.ALL_RESULTS'),
-    LABEL_TECH: $translate('PAGES.EXPLORE.LABEL_TECH')
+    ALL_RESULTS: $translate('UI.REPORT.ALL_RESULTS')
   };
 
   $: report = {
@@ -318,8 +302,7 @@
     ],
     specifics: $summaryStore['EVALUATION_SPECIFICS'],
     summary: $summaryStore['EVALUATION_SUMMARY'],
-    title: $summaryStore['EVALUATION_TITLE'] || $translate('PAGES.REPORT.TITLE'),
-    tech: $exploreStore['TECHNOLOGIES_RELIED_UPON']
+    title: $summaryStore['EVALUATION_TITLE'] || $translate('PAGES.REPORT.TITLE')
   };
 
   let wcagVersions = [...WCAG_VERSIONS].reverse().map((version) => {

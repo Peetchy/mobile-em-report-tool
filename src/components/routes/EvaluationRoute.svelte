@@ -2,7 +2,7 @@
 <Router>
   <EvaluationLayout>
     <Route path="/define-scope"><DefineScopePage /></Route>
-    <Route path="/explore-website"><ExploreWebsitePage /></Route>
+    <Route path="/explore-application"><ExploreApplicationPage /></Route>
     <Route path="/select-sample"><SelectSamplePage /></Route>
     <Route path="/audit-sample"><AuditSamplePage /></Route>
     <Route path="/report-findings"><ReportFindingsPage /></Route>
@@ -19,7 +19,7 @@
   import {
     AuditSamplePage,
     DefineScopePage,
-    ExploreWebsitePage,
+    ExploreApplicationPage,
     ReportFindingsPage,
     SelectSamplePage,
     ViewReportPage

@@ -59,7 +59,7 @@
       title: $translate('UI.NAV.WZRD_SCOPE')
     },
     {
-      path: '/evaluation/explore-website',
+      path: '/evaluation/explore-application',
       title: $translate('UI.NAV.WZRD_EXPLORE')
     },
     {

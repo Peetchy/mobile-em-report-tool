@@ -13,7 +13,7 @@ export const routes = derived([translate], ([$translate]) => {
     },
     EXPLORE: {
       title: $translate('UI.NAV.STEP_EXPLORE'),
-      path: '/evaluation/explore-website'
+      path: '/evaluation/explore-application'
     },
     SAMPLE: {
       title: $translate('UI.NAV.STEP_SAMPLE'),

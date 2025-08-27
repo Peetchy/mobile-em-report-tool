@@ -1,27 +1,6 @@
 [
     {
-        "lang": "en",
-        "title": "English"
-    },
-    {
-        "lang": "nl",
-        "title": "Nederlands",
-        "status": "draft"
-    },
-    {
-        "lang": "fr",
-        "title": "Français",
-        "status": "draft"
-    },
-    {
-        "lang": "pl",
-        "title": "Polski",
-        "status": "draft",
-        "wcagStatus": "unofficial"
-    },
-    {
         "lang": "th",
-        "title": "ไทย",
-        "status": "draft"
+        "title": "ไทย"
     }
 ]

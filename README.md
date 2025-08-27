@@ -1,4 +1,4 @@
-# WCAG-EM Report Tool
+# ETDA Mobile Accessibility Report Tool
 
 <a href="https://wcag-em-report-tool-2021-redesign.netlify.app/"><img width="400"  alt="" src="https://user-images.githubusercontent.com/178782/114709430-d86bd700-9d2c-11eb-8508-c628ef6614d4.png"></a>
 
@@ -6,9 +6,9 @@
 
 ## About this tool
 
-The WCAG-EM Report tool is an assistant that takes the user through the process of evaluating the accessibility of a website, using the [WCAG Evaluation Methodology](https://www.w3.org/TR/WCAG-EM/).
+This tool guides evaluators through assessing the accessibility of mobile applications using the principles from the “คู่มือการออกแบบและพัฒนาแอปพลิเคชันบนสมาร์ตโฟน โดย ETDA”.
 
-It is developed by the Web Accessibility Initiative (WAI) at the World Wide Web Consortium (W3C). Initially developed with support from the <a href="http://www.w3.org/WAI/ACT/">WAI-ACT Project</a>, and updated with support of the <a href="http://www.w3.org/WAI/Tools/">WAI-Tools Project</a>, co-funded by the European Commission (EC).
+The application currently supports only the Thai language and focuses solely on mobile app evaluations.
 
 ## Environments
 
